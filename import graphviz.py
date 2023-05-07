@@ -1,8 +1,5 @@
 from graphviz import *
 
-# Define DFA transitions
-transitions = {(0, 'a'): 1, (0, 'b'): 0, (1, 'a'): 0, (1, 'b'): 1}
-
 # Create new graph
 dot = Digraph(format='png')
 

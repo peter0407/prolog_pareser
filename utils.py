@@ -37,13 +37,15 @@ def find_element_index(lst, element):
 def spacify(text):
     # The regular expression pattern matches any string that starts and ends with double quotes
     # and may contain escaped characters inside the quotes.
-    matches = re.findall(
-        r'/\*.*?\*/|\".*?\"|<=|>=|<>|<>|=|<|>|[^:]-|\/[^\*]|[^\*]\/', text)
+    matches = re.findall(r'/\*.*\*/', text)
+    for match in matches:
+        text = text.replace(f'{match}', f' ')
     # Find all matches of the regular expression pattern in the text.
+    matches = re.findall(r'|<=|>=|<>|<>|=|<|>|[^:]-', text)
     for match in matches:
         text = text.replace(f'"{match}"', f' "{match}" ')
 
-    lst = ["+", ":-", ".", "(", ")", ",", ";", "%"]
+    lst = ["+", ":-", ".", "(", ")", ",", ";", "%", "/", "*"]
     for i in lst:
         text = text.replace(f'{i}', f' {i} ')
     return text
